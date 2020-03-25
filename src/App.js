@@ -1,4 +1,6 @@
 import React from "react";
+import Login from "./components/login"
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,7 +43,7 @@ export default function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <Login>Home</Login>;
 }
 
 function About() {

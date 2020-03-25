@@ -1,6 +1,6 @@
 import React from "react";
 import './Feed.scss';
-import Login from "../login";
+import Login from "../Auth/Login/login"
 
 const Feed = () => {
 

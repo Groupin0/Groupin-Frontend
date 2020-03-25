@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import ReactDOM from 'react-dom'
  
-import SocialButton from './social-button'
-import {getSocialUser,setSocialUser} from '../services/local-storage-service'
+import SocialButton from '../../social-button'
+import {getSocialUser,setSocialUser} from '../../../services/local-storage-service'
  
 
  

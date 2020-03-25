@@ -1,0 +1,13 @@
+.Navbar {
+  margin: 2rem;
+  margin: 2rem;
+
+  &__nav {
+    display: flex;
+    font-size: 2.2rem;
+
+    &--item {
+        margin: 0 2rem
+    }
+  }
+}

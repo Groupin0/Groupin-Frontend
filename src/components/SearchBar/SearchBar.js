@@ -4,7 +4,7 @@ import './SearchBar.scss';
 const SearchBar = props => {
     return (
         <input 
-            className= { 'SearchBar ' + (props.className || '') } 
+            className= { `SearchBar ${props.className}` } 
             type= 'search' 
             placeholder= 'חפש...' 
             onChange= { props.searchChange }

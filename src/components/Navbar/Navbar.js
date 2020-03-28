@@ -1,9 +1,9 @@
 import React from "react";
+import './Navbar.scss';
 import {Link} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar.js';
 import Button from '../Button/Button.js';
 import Logo from '../Logo/Logo';
-import './Navbar.scss';
 
 const Navbar = props => {
 
@@ -12,15 +12,15 @@ const Navbar = props => {
 
     if (isConnected) {
         accountPanel = <div className='Navbar__account'>
-                        <Button value={ 'צור מפגש' } className={ 'Button__black' } />
-                        <Button value={ 'א' } className={ 'Button__white Button__circle Navbar__account--profile' } />
+                        <Button label='צור מפגש' className='Button__black' />
+                        <Button label='א' className='Button__white Button__circle Navbar__account--profile' />
                     </div>;
     }
 
     else {
         accountPanel = <div className='Navbar__account'>
-                        <Button value={ 'התחבר' } className={ 'Button__white' } />
-                        <Button value={ 'הירשם' } className={ 'Button__black' } />
+                        <Button label='התחבר' className='Button__white' />
+                        <Button label='הירשם' className='Button__black' />
                     </div>;
     }
 
@@ -30,7 +30,7 @@ const Navbar = props => {
                 <Logo />
             </Link>
 
-            <SearchBar className={'Navbar__searchbar'} />
+            <SearchBar className='Navbar__searchbar' />
 
             {accountPanel}
     

@@ -1,13 +1,49 @@
+$blue: #2699FB;
+$navHeight: 120px;
+
 .Navbar {
-  margin: 2rem;
-  margin: 2rem;
+  background-color: $blue;
+  height: $navHeight;
+  border-radius: 0 0 $navHeight $navHeight;
+  padding: 0 $navHeight;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-  &__nav {
-    display: flex;
-    font-size: 2.2rem;
+  &__account {
+    flex: 1;
 
-    &--item {
-        margin: 0 2rem
+    &--profile {
+      float: left;
     }
+  }
+
+  &__home {
+    flex: 1;
+
+    & .logo{
+      width: 200px;
+      transition: all 0.5s ease;
+
+      &__groupin {
+        fill: white;
+      }
+
+      &__play {
+        fill: $blue;
+      }
+      
+      &:hover , &:active {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__searchbar {
+    height:40px;
+    width:435px;
+    font-size: 28px;
+    
   }
 }

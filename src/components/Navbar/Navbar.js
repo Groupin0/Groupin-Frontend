@@ -1,17 +1,40 @@
 import React from "react";
-import './Navbar.scss';
 import {Link} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar.js';
+import Button from '../Button/Button.js';
+import Logo from '../Logo/Logo';
+import './Navbar.scss';
 
 const Navbar = props => {
-    console.log(props);
+
+    const isConnected = props.isConnected || false;
+    let accountPanel = '';
+
+    if (isConnected) {
+        accountPanel = <div className='Navbar__account'>
+                        <Button value={ 'צור מפגש' } className={ 'Button__primery' } />
+                        <Button value={ 'א' } className={ 'Button__secondary Button__circle Navbar__account--profile' } />
+                    </div>;
+    }
+
+    else {
+        accountPanel = <div className='Navbar__account'>
+                        <Button value={ 'התחבר' } className={ 'Button__secondary' } />
+                        <Button value={ 'הירשם' } className={ 'Button__primery' } />
+                    </div>;
+    }
+
     return (
-        <div className='Navbar'>
-            <ul className='Navbar__nav'>
-                <Link to='/'><li className='Navbar__nav--item'>דף הבית</li></Link>
-                <Link to='/about'><li className='Navbar__nav--item'>אודותינו</li></Link>
-                <Link to='/contact'><li className='Navbar__nav--item'>צור קשר</li></Link>
-            </ul>
-        </div>
+        <nav className='Navbar'>
+            <Link to='/' className='Navbar__home'>
+                <Logo />
+            </Link>
+
+            <SearchBar className={'Navbar__searchbar'} />
+
+            {accountPanel}
+    
+        </nav>
     )
 };
 

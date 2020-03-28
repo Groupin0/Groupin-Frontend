@@ -12,15 +12,15 @@ const Navbar = props => {
 
     if (isConnected) {
         accountPanel = <div className='Navbar__account'>
-                        <Button value={ 'צור מפגש' } className={ 'Button__primery' } />
-                        <Button value={ 'א' } className={ 'Button__secondary Button__circle Navbar__account--profile' } />
+                        <Button value={ 'צור מפגש' } className={ 'Button__black' } />
+                        <Button value={ 'א' } className={ 'Button__white Button__circle Navbar__account--profile' } />
                     </div>;
     }
 
     else {
         accountPanel = <div className='Navbar__account'>
-                        <Button value={ 'התחבר' } className={ 'Button__secondary' } />
-                        <Button value={ 'הירשם' } className={ 'Button__primery' } />
+                        <Button value={ 'התחבר' } className={ 'Button__white' } />
+                        <Button value={ 'הירשם' } className={ 'Button__black' } />
                     </div>;
     }
 

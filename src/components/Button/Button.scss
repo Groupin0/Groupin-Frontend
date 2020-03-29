@@ -1,0 +1,28 @@
+.Button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 7px;
+    margin: 6px;
+    font-size: 1.8rem;
+    transition: all 0.5s ease;
+
+    &:hover , &:active {
+        transform: scale(1.1);
+    }
+
+    &__black {
+        background-color: black;
+        color: white;
+    }
+
+    &__white {
+        background-color: white;
+        color: black;
+    }
+
+    &__circle {
+        width: 40px;
+        border-radius: 50%;
+    }
+}

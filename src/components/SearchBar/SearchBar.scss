@@ -1,7 +1,6 @@
 .SearchBar {
-    padding: 4px 18px;
+    padding: inherit 18px;
     border: none;
-    border-radius: 7px;
     
     &:placeholder-shown {
         background: white url(./search.svg) no-repeat 18px center;

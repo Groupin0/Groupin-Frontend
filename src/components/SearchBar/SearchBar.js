@@ -1,9 +1,10 @@
 import React from 'react';
 import './SearchBar.scss';
+import InputField from '../InputField/InputField.js';
 
 const SearchBar = props => {
     return (
-        <input 
+        <InputField 
             className= { `SearchBar ${props.className}` } 
             type= 'search' 
             placeholder= 'חפש...' 

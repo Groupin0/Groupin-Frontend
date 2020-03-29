@@ -86,7 +86,8 @@
     width: 85%;
     margin: 0 auto;
     flex: .2;
+    font-size: 1.4rem;
 
-    & > span  {font-size: 1.4rem}
+    & > span:first-child { margin-right: 50px}
   }
 }

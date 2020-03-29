@@ -15,18 +15,16 @@
         margin: 15% auto;
         width: 500px;
 
-        &--header {
-            border-bottom: 2px solid grey;
+        &--header, &--body, &--actions {
             padding: 20px;
         }
 
-        &--body {
-            padding: 20px;
+        &--header {
+            border-bottom: 2px solid grey;
         }
 
         &--actions {
             border-top: 2px solid grey;
-            padding: 20px;
             text-align: left;
         }
     }

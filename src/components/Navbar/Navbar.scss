@@ -2,15 +2,21 @@ $blue: #2699FB;
 $navHeight: 120px;
 
 .Navbar {
+  box-sizing: border-box;
   background-color: $blue;
   height: $navHeight;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10001;
   border-radius: 0 0 $navHeight $navHeight;
   padding: 0 $navHeight;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
+  overflow: hidden;
+  
   &__account {
     flex: 1;
 

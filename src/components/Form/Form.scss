@@ -1,0 +1,42 @@
+$blue : #2699FB;
+$lightBlue: #BCE0FD;
+
+.Form {
+    text-align: center;
+    border: 2px solid $blue;
+    width: 500px;
+    max-width: 100%;
+    padding: 25px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__input, &__button {
+        margin: 15px 10px;
+    }
+
+    &__title {
+        color: $blue;
+        font-size: 4rem; 
+        margin: 15px auto;
+    }
+
+    &__input {
+        border: 2px solid $lightBlue;
+        height: 50px;
+        font-size: 2.2rem;
+        flex: 100%;
+
+        &:active, &:focus {
+            border: 2px solid $blue;
+        }
+
+        &--2 {
+            flex: 0 40%;
+        }
+    }
+
+    &__button {
+        margin-right: auto;
+    }
+}

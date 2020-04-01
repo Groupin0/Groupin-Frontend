@@ -32,7 +32,7 @@ const Navbar = props => {
         <nav className='Navbar'>
             {isAddSession 
                 ? <Modal onDismiss = {()=> {setAddSession(!isAddSession)}}>
-                    <AddSession onSubmit= {()=> {setAddSession(!isAddSession)}} />
+                    <AddSession />
                     </Modal> 
                 : ''
             }

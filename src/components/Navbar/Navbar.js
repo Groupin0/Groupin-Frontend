@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar.js';
 import Button from '../Button/Button.js';
 import Logo from '../Logo/Logo';
-import Modal from '../Modal/Modal.js';
+import Modal from '../Shared/Modal/Modal.js';
 import AddSession from '../Shared/AddSession.js';
 
 const Navbar = props => {

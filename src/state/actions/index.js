@@ -29,6 +29,7 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
         start_date
         category
         capacity
+        img_source
     }
 }`;
 

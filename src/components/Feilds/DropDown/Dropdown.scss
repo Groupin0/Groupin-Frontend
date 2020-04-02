@@ -1,0 +1,5 @@
+.Dropdown {
+    border-radius: 7px !important;
+    font-size: 1.75rem;
+    & > .react-dropdown-select-content {padding: 0 7px;}
+}

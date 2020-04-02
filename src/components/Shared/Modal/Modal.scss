@@ -1,31 +1,32 @@
 .Modal {
     height: 100vh;
     width: 100vw;
-    background-color: rgba(black, 0.95);
+    background-color: rgba(black, 0.8);
+    backdrop-filter: blur(8px);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10002;
-    text-align: right;
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        right: 0;
+    }
 
     &__content {
+        opacity: 0;
         background-color: white;
-        border: 2px solid grey;
-        border-radius: 7px;
-        margin: 15% auto;
-        width: 500px;
+        border-radius: 25px;
+        margin:10% auto;
+        display: inline-block;
+        animation: fadeIn .6s .2s forwards ease-out;
 
         &--header, &--body, &--actions {
-            padding: 20px;
-        }
-
-        &--header {
-            border-bottom: 2px solid grey;
-        }
-
-        &--actions {
-            border-top: 2px solid grey;
-            text-align: left;
+            padding: 10px;
         }
     }
+
 }

@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 const Modal = props => {
     return ReactDOM.createPortal(
         <div onClick={ props.onDismiss } className='Modal'>
-            <div className='Modal__overlay'/>
             <div onClick={ (e)=> e.stopPropagation() } className='Modal__content'>
                 { props.children }
             </div>

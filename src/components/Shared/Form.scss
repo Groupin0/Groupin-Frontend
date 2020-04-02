@@ -1,0 +1,71 @@
+@import "../variables";
+
+.Form {
+    text-align: center;
+    border: 2px solid $blue;
+    border-radius: 25px;
+    width: 500px;
+    max-width: 100%;
+    padding: 25px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__input, &__button {
+        margin: 15px 10px;
+    }
+
+    &__title {
+        color: $blue;
+        font-size: 4rem; 
+        margin: 15px auto 30px auto;
+    }
+
+    &__row {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        & > div {position: relative;width: 96%; z-index: 100}
+    }
+
+    &__input {
+        box-sizing: border-box !important;
+        border: 2px solid $lightBlue !important;
+        height: 45px;
+        flex: 100%;
+        transition: all .3s;
+
+        &:focus, &:focus-within {
+            outline: none;
+            border: 2px solid $blue !important;
+            box-shadow: none !important;
+        }
+
+        &--small {
+            text-align: center;
+            margin: 15px 10px;
+            //flex: 1;
+        }
+
+        &--error:focus {
+            border: 2px solid red !important;
+        }
+    }
+
+    &__button {
+        margin-top: 40px;
+    }
+
+    &__error {
+        z-index: -1;
+        opacity: 0;
+        color: red;
+        position: absolute;
+        top: -5px;
+        right: 10px;
+        font-size: 1.2rem;
+        animation: fadeIn .2s forwards ease-in;
+    }
+}

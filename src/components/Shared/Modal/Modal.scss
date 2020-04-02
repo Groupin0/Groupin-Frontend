@@ -8,11 +8,21 @@
     left: 0;
     z-index: 10002;
 
+    &__overlay {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        right: 0;
+    }
+
     &__content {
+        opacity: 0;
         background-color: white;
-        border-radius: 7px;
+        border-radius: 25px;
         margin:10% auto;
         display: inline-block;
+        animation: fadeIn .6s .2s forwards ease-out;
 
         &--header, &--body, &--actions {
             padding: 10px;

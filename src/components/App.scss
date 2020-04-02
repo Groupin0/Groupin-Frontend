@@ -1,6 +1,13 @@
+
 .App {
 
   &__main {
     margin: 250px 0 150px 0;
   }
+}
+
+
+@keyframes fadeIn {
+  from {transform: translateY(30px)}
+  to   {opacity: 1; transform: translateY(0)}
 }

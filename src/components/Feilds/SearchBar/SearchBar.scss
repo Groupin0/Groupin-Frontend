@@ -1,0 +1,8 @@
+.SearchBar {
+    padding: 0 50px;
+    border: none;
+    
+    &:placeholder-shown {
+        background: white url(../../../assets/search.svg) no-repeat 18px center;
+    }
+}

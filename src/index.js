@@ -4,7 +4,8 @@ import './index.css';
 import App from './components/App';
 
 // Router
-import {BrowserRouter} from "react-router-dom";
+import history from './history';
+import {Router} from "react-router-dom";
 
 // GraphQL provider
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -20,11 +21,11 @@ import reducers from './state/reducers';
 const store = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <BrowserRouter>
+    <Router history={history}>
         <ApolloProvider client={client}>
             <Provider store={store}>
                 <App />
             </Provider>
         </ApolloProvider>
-    </BrowserRouter>,document.getElementById('root')
+    </Router>,document.getElementById('root')
 );

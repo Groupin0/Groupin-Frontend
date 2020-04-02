@@ -1,13 +1,19 @@
 export const loadingAction = '[LOADING] Switch Loading';
 
+export const modalActions = {
+    OPEN_MODAL: '[MODAL] Open Modal',
+    CLOSE_MODAL: '[MODAL] Close Modal'
+};
+
 export const categoriesActions = {
-    FETCH_CATEGORIES: '[CATEGORIES] FETCH_CATEGORIES'
+    FETCH_CATEGORIES: '[CATEGORIES] Fetch Categories'
 };
 
 export const sessionActions = {
-    FETCH_SESSIONS: '[SESSIONS] FETCH_SESSIONS'
+    FETCH_SESSIONS: '[SESSIONS] Fetch Sessions',
+    CREATE_SESSION: '[SESSIONS] Create Sessions'
 };
 
 export const userActions = {
-    FETCH_USER: '[USER] FETCH_USER'
+    FETCH_USER: '[USER] Fetch User'
 };

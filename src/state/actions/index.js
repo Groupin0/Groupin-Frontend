@@ -65,7 +65,7 @@ export const getUser = () => async dispatch => {
 
         dispatch({type: userActions.FETCH_USER, payload: response.data.UserDetailed});
     } catch (e) {
-        console.dir(e);
+        console.error(e);
     }
 };
 

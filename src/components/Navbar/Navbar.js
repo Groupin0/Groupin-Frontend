@@ -9,6 +9,7 @@ import Modal from '../Shared/Modal/Modal.js';
 import AddSession from '../Shared/AddSession/AddSession.js';
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {openModal} from "../../state/actions";
+import UserButton from "../UserButton/UserButton";
 
 const Navbar = () => {
     const {user, isModalOpen, addSessionModal} = useSelector(state => ({
@@ -24,7 +25,7 @@ const Navbar = () => {
         if (user && user.id !== null) {
             accountPanel = <>
                 <Button label='צור מפגש' className='Button__black' onClick={() => dispatch(openModal('addSessionModal'))} />
-                <Button label='א' className='Button__white Button__circle Navbar__account--profile' />
+                <UserButton userName={user.display_name} userImage={user.img_source} />
             </>;
         }
 

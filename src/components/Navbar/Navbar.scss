@@ -15,10 +15,12 @@ $navHeight: 120px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   
   &__account {
     flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     &--profile {
       float: left;

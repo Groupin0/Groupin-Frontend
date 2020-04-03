@@ -1,4 +1,4 @@
-import ApiService, {client} from "../../api";
+import ApiService, {baseUrl, client} from "../../api";
 import {gql} from "apollo-boost";
 import {categoriesActions, loadingAction, modalActions, sessionActions, userActions} from "./enums";
 
@@ -63,8 +63,17 @@ export const getUser = () => async dispatch => {
     try {
         response = await client.query({query});
 
-        dispatch({type: userActions.FETCH_USER, payload: response.data.User});
+        dispatch({type: userActions.FETCH_USER, payload: response.data.UserDetailed});
     } catch (e) {
         console.dir(e);
+    }
+};
+
+export const logout = () => async dispatch => {
+    try {
+        window.open(`${baseUrl}/users/logout`, '_self')
+
+    } catch (e) {
+        console.error(e)
     }
 };

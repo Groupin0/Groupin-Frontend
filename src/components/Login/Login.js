@@ -16,7 +16,7 @@ const Login = () => {
         <div className='Login'>
             <h1 className='Login__title'>התחברות / הרשמה</h1>
             <div className='Login__wrapper'>
-                <a className='Login__btn' onClick={onLogin}>
+                <a className='Login__btn' href='http://localhost:4000/auth/facebook'>
                     <img src={facebook} alt="facebook icon"/>
                     <p>התחברות באמצעות פייסבוק</p>
                 </a>

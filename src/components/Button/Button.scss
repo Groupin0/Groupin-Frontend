@@ -5,10 +5,11 @@
     border-radius: 7px;
     margin: 6px;
     font-size: 1.8rem;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 
+    &:focus {outline: none}
     &:hover , &:active {
-        transform: scale(1.1);
+        transform: scale(1.04);
     }
 
     &__black {

@@ -5,6 +5,7 @@ import Navbar from "./Navbar/Navbar";
 import Feed from "./Feed/Feed";
 import {getCategories, getSessions, switchLoading} from "../state/actions";
 import {useDispatch, useSelector} from "react-redux";
+import Login from "./Login/Login";
 
 const App = () => {
     const loading = useSelector(state => state.loading);
@@ -28,6 +29,7 @@ const App = () => {
           {!loading ? <main className='App__main'>
             <Switch>
                 <Route path='/' exact render={() => <Feed />} />
+                <Route path='/login' exact render={() => <Login />} />
             </Switch>
         </main> : ''}
       </div>

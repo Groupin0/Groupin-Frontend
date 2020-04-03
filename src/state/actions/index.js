@@ -1,4 +1,4 @@
-import client from "../../api";
+import ApiService, {client} from "../../api";
 import {gql} from "apollo-boost";
 import {categoriesActions, loadingAction, modalActions, sessionActions} from "./enums";
 
@@ -48,4 +48,14 @@ export const closeModal = (modal) => dispatch => {
 
 export const switchLoading = (isLoading) => dispatch => {
     dispatch({type: loadingAction, payload: isLoading});
+};
+
+export const login = () => async dispatch => {
+    let response = '';
+
+    try {
+        response = await ApiService.get('/users/auth/facebook');
+    } catch (e) {
+        console.dir(e);
+    }
 };

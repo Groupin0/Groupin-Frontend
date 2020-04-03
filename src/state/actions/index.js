@@ -1,6 +1,6 @@
 import ApiService, {client} from "../../api";
 import {gql} from "apollo-boost";
-import {categoriesActions, loadingAction, modalActions, sessionActions} from "./enums";
+import {categoriesActions, loadingAction, modalActions, sessionActions, userActions} from "./enums";
 
 export const getCategories = () => async dispatch => {
     const query = gql`{
@@ -50,11 +50,20 @@ export const switchLoading = (isLoading) => dispatch => {
     dispatch({type: loadingAction, payload: isLoading});
 };
 
-export const login = () => async dispatch => {
+export const getUser = () => async dispatch => {
+    const query = gql`{
+        UserDetailed {
+            id
+            display_name
+            img_source
+        }
+    }`;
     let response = '';
 
     try {
-        response = await ApiService.get('/users/auth/facebook');
+        response = await client.query({query});
+
+        dispatch({type: userActions.FETCH_USER, payload: response.data.User});
     } catch (e) {
         console.dir(e);
     }

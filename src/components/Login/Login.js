@@ -8,15 +8,11 @@ import {login} from "../../state/actions";
 const Login = () => {
     const dispatch = useDispatch();
 
-    const onLogin = () => {
-        dispatch(login());
-    };
-
     return (
         <div className='Login'>
             <h1 className='Login__title'>התחברות / הרשמה</h1>
             <div className='Login__wrapper'>
-                <a className='Login__btn' href='http://localhost:4000/auth/facebook'>
+                <a className='Login__btn' href='http://localhost:4000/users/auth/facebook/'>
                     <img src={facebook} alt="facebook icon"/>
                     <p>התחברות באמצעות פייסבוק</p>
                 </a>

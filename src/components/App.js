@@ -3,7 +3,7 @@ import './App.scss';
 import {Switch, Route} from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import Feed from "./Feed/Feed";
-import {getCategories, getSessions, switchLoading} from "../state/actions";
+import {getCategories, getSessions, getUser, switchLoading} from "../state/actions";
 import {useDispatch, useSelector} from "react-redux";
 import Login from "./Login/Login";
 
@@ -19,6 +19,7 @@ const App = () => {
     const fetchData = async () => {
         await dispath(getSessions());
         await dispath(getCategories());
+        await dispath(getUser());
 
         dispath(switchLoading(false));
     };

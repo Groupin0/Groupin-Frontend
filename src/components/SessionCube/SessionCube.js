@@ -17,8 +17,7 @@ const SessionCube = ({data, className}) => {
     const {category, title, description, start_date, img_source} = data;
 
     const renderLimitWords = useCallback((text, limit) => {
-
-        if (text.length > limit) {
+        if (text && text.length > limit) {
             return `${text.substring(0, limit)} ...`;
         }
         return text;

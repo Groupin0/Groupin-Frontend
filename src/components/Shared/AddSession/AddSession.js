@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../Shared/Form.scss';
 
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 
 import Button from '../../Button/Button.js';
@@ -10,9 +10,11 @@ import InputDate from "../../Feilds/InputDate/InputDate";
 import InputTime from "../../Feilds/InputTime/InputTime";
 import Dropdown from "../../Feilds/DropDown/Dropdown";
 import {errorMessages} from "../../../static/formTexts";
+import {createSession, isLoading} from "../../../state/actions";
 
 const AddSession = () => {
-    const [selectedCategoryId, setSelectedCategoryId] = useState(0);
+    const dispatch = useDispatch();
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const categories = useSelector(state => state.categories);
     const { register, handleSubmit, errors } = useForm();
 
@@ -27,6 +29,7 @@ const AddSession = () => {
         };
 
         console.log(finalForm);
+        dispatch(createSession(finalForm));
     };
 
     return (

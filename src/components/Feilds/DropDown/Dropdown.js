@@ -3,15 +3,15 @@ import './Dropdown.scss';
 import {Select} from "react-dropdown-select";
 
 const Dropdown = ({className, placeholder, options, setValue, defaultVal}) => {
-    const defaultValue = options[defaultVal];
+
     
     return (
         <>
-        {defaultValue && <Select
+        {options.length > 0 && <Select
             labelField='name'
             options={options}
             dropdownGap={-5}
-            values={[defaultValue]}
+            values={[]}
             valueField={'id'}
             keepSelectedInList={false}
             color='#2699FB'

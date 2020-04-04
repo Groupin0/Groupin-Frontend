@@ -25,7 +25,7 @@ const Navbar = () => {
         if (user && user.id !== null) {
             accountPanel = <>
                 <Button label='צור מפגש' className='Button__black' onClick={() => dispatch(openModal('addSessionModal'))} />
-                <UserButton userName={user.display_name} userImage={user.img_source} />
+                <UserButton userId={user.id} userName={user.display_name} userImage={user.img_source} />
             </>;
         }
 
@@ -38,9 +38,9 @@ const Navbar = () => {
 
     return (
         <nav className='Navbar'>
-            <Link to='/' className='Navbar__home'>
+            <div className='Navbar__home' onClick={() => history.push('/home')}>
                 <Logo />
-            </Link>
+            </div>
 
             <SearchBar className='Navbar__searchbar' />
             <div className='Navbar__account'>

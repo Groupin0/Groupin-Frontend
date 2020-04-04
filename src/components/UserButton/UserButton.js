@@ -2,8 +2,9 @@ import React, {useRef} from "react";
 import './UserButton.scss';
 import {useDispatch} from "react-redux";
 import {logout} from "../../state/actions";
+import history from '../../history';
 
-const UserButton = ({userName, userImage}) => {
+const UserButton = ({userName, userImage, userId}) => {
     const dispatch = useDispatch();
     const userDropDown = useRef();
 
@@ -13,6 +14,10 @@ const UserButton = ({userName, userImage}) => {
 
     const onClose = () => {
         userDropDown.current.classList.remove('UserButton__dropdown--open');
+    };
+
+    const onNavigateToMySessions = () => {
+        history.push('/my-sessions')
     };
 
     const onLogout = () => {
@@ -26,7 +31,7 @@ const UserButton = ({userName, userImage}) => {
             </div>
             <ul ref={userDropDown} className='UserButton__dropdown' onClick={onClose}>
                 <li className='UserButton__dropdown--overlay' />
-                <li>המפגשים שלי</li>
+                <li onClick={onNavigateToMySessions}>המפגשים שלי</li>
                 <li onClick={onLogout}>התנתק</li>
             </ul>
         </div>

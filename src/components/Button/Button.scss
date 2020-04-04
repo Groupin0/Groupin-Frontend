@@ -1,15 +1,16 @@
 .Button {
-    width: 100px;
+    min-width: 100px;
     height: 40px;
     border: none;
     border-radius: 7px;
     margin: 6px;
+    padding: 5px 10px;
     font-size: 1.8rem;
     transition: all 0.3s ease;
 
     &:focus {outline: none}
     &:hover , &:active {
-        transform: scale(1.04);
+            transform: scale(1.04);
     }
 
     &__black {
@@ -20,5 +21,15 @@
     &__white {
         background-color: white;
         color: black;
+    }
+
+    &__disabled {
+        background-color: grey;
+        color: white;
+        
+        &:focus {outline: none}
+        &:hover , &:active {
+            transform: none;
+        }
     }
 }

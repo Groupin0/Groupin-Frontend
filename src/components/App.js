@@ -35,7 +35,7 @@ const App = () => {
                 <Route path='/login' exact render={() => <Login />} />
                 <Route path='/my-sessions' exact render={() => <MySessions />} />
                 <Route path='/#_=_' exact>
-                {history.push('/')}
+                {history.push('/home')}
             </Route>
             </Switch>
         </main>}

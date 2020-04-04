@@ -103,6 +103,7 @@ export const isLoading = (isLoading) => dispatch => {
 };
 
 export const createSession = data => async dispatch => {
+        dispatch(isLoading(true));
         let response = '';
         const CREATE_SESSION = gql`
                    mutation SubmitCreateSession($title: String!, $category: ID!) {
@@ -120,12 +121,11 @@ export const createSession = data => async dispatch => {
             response = await client.mutate(({mutation: CREATE_SESSION, variables: data}));
 
             dispatch({type: sessionActions.CREATE_SESSION, payload: response.data.createSession});
-            setTimeout(() => {
                 history.push('/my-sessions');
                 dispatch(closeModal('addSessionModal'));
                 dispatch(isLoading(false));
-            }, 3000);
         } catch (e) {
+            dispatch(isLoading(false));
             console.dir(response);
         }
     };

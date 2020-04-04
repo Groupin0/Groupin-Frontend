@@ -40,9 +40,11 @@
       &__text, &__date {width: 75%;}
 
       &__text {
+        cursor: pointer;
         & > h1 {
           font-size: 3.5rem;
           font-weight: normal;
+          &:hover {text-decoration: underline;}
         }
         & > p  {line-height: 1.8}
       }
@@ -75,8 +77,11 @@
     flex: 1;
     margin: 0 auto;
       & > h1 {
+        cursor: pointer;
         font-size: 1.8rem;
         margin: 20px 0;
+
+        &:hover {text-decoration: underline;}
       }
       & > p  {
         line-height: 2.4;

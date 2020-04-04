@@ -1,6 +1,36 @@
+@import "../variables";
+
 .Feed {
+    position: relative;
     width: 1150px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+
+    &__load-more {
+        cursor: pointer;
+        font-size: 3rem;
+        color: white;
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $blue;
+        padding: 10px;
+        border-radius: 7px;
+        transition: all .2s .4s ease-out;
+
+        &:hover {
+            animation: moveDownAndUp 1.8s infinite linear;
+        }
+    }
+}
+
+@keyframes moveDownAndUp {
+    0% {transform: translateX(-50%) translateY(0);}
+    20% {transform: translateX(-50%) translateY(5px);}
+    40% {transform: translateX(-50%) translateY(3px);}
+    60% {transform: translateX(-50%) translateY(10px);}
+    75% {transform: translateX(-50%) translateY(0);}
+    100% {transform: translateX(-50%) translateY(0);}
 }

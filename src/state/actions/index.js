@@ -32,6 +32,7 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
         category
         capacity
         img_source
+        platform_media_id
     }
 }`;
 
@@ -40,7 +41,7 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
     dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.FrontSessions})
 };
 
-export const getMoreSessions = (start, count=20) => async dispatch => {
+export const getMoreSessions = (start, count = 20) => async dispatch => {
     let response = '';
     const query = gql`{
     FrontSessions(start:${start}, count:${count}) {
@@ -51,6 +52,7 @@ export const getMoreSessions = (start, count=20) => async dispatch => {
         category
         capacity
         img_source
+        platform_media_id
     }
 }`;
     response = await client.query({query});
@@ -62,10 +64,34 @@ export const getMoreSessions = (start, count=20) => async dispatch => {
     }
 };
 
-export const getUserSessions = id => async dispatch => {
-  let response = '';
-  const query = gql`{
-              SessionsByUser(user_id:${id}, start:0, count:20){
+export const getMoreSessionsByUserId = (id, start, count = 20) => async dispatch => {
+    let response = '';
+    const query = gql`{
+    SessionsByUser(user_id:${id}, start:${start}, count:${count}) {
+        id
+        title
+        description
+        start_date
+        category
+        capacity
+        img_source
+        platform_media_id
+    }
+}`;
+    response = await client.query({query});
+
+    if (response.data.SessionsByUser.length > 0) {
+        await dispatch({type: sessionActions.LOAD_MORE_SESSIONS, payload: response.data.SessionsByUser});
+        return true;
+    } else {
+        return false;
+    }
+};
+
+export const getUserSessions = (id, start = 0) => async dispatch => {
+    let response = '';
+    const query = gql`{
+              SessionsByUser(user_id:${id}, start:${start}, count:20){
                             id
                             title
                             description
@@ -76,14 +102,14 @@ export const getUserSessions = id => async dispatch => {
                             platform_media_id
               }
   }`;
-  
-  try {
-      response = await client.query({query});
 
-      dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.SessionsByUser})
-  } catch (e) {
-      
-  }
+    try {
+        response = await client.query({query});
+
+        dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.SessionsByUser})
+    } catch (e) {
+
+    }
 };
 
 export const getUser = () => async dispatch => {
@@ -127,9 +153,9 @@ export const isLoading = (isLoading) => dispatch => {
 };
 
 export const createSession = data => async dispatch => {
-        dispatch(isLoading(true));
-        let response = '';
-        const CREATE_SESSION = gql`
+    dispatch(isLoading(true));
+    let response = '';
+    const CREATE_SESSION = gql`
                    mutation SubmitCreateSession($title: String!, $category: ID!) {
                      createSession(title: $title, category: $category) {
                         id
@@ -141,15 +167,15 @@ export const createSession = data => async dispatch => {
                         img_source
                       }
                     }`;
-        try {
-            response = await client.mutate(({mutation: CREATE_SESSION, variables: data}));
+    try {
+        response = await client.mutate(({mutation: CREATE_SESSION, variables: data}));
 
-            dispatch({type: sessionActions.CREATE_SESSION, payload: response.data.createSession});
-                history.push('/my-sessions');
-                dispatch(closeModal('addSessionModal'));
-                dispatch(isLoading(false));
-        } catch (e) {
-            dispatch(isLoading(false));
-            console.dir(response);
-        }
-    };
+        dispatch({type: sessionActions.CREATE_SESSION, payload: response.data.createSession});
+        history.push('/my-sessions');
+        dispatch(closeModal('addSessionModal'));
+        dispatch(isLoading(false));
+    } catch (e) {
+        dispatch(isLoading(false));
+        console.dir(response);
+    }
+};

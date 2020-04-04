@@ -7,11 +7,12 @@ import Modal from "../Shared/Modal/Modal";
 import Session from "../Session/Session";
 import {openModal} from "../../state/actions";
 
-const Feed = ({isUserSessions}) => {
+const Feed = ({isUserSessions, onLoadMoreSessions}) => {
+    const [loadMore, setLoadMore] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [selectedSession, setSelectedSession] = useState(null);
     const dispatch = useDispatch();
-    const {isModalOpen, infoSessionModal, categories, sessions} = useSelector(state => ({
-        isModalOpen: state.modals.isModalOpen,
+    const {infoSessionModal, categories, sessions} = useSelector(state => ({
         infoSessionModal: state.modals.infoSessionModal,
         categories: state.categories,
         sessions: state.sessions
@@ -22,18 +23,31 @@ const Feed = ({isUserSessions}) => {
         const onSelectedSession = (session) => {
             setSelectedSession(session);
             dispatch(openModal('infoSessionModal'));
-
         };
 
         return <SessionCube
             data={{...session, category: categories.find(c => c.id === session.category)}}
             onClickSession={onSelectedSession}
-            className={(i === 0 && !isUserSessions) ? 'SessionCube__first' : ''} key={i}/>
+            className={(i === 0 && !isUserSessions) ? 'SessionCube__first' : ''} key={session.id}/>
     });
+
+    const handleLoadMoreSessions = async () => {
+        setLoading(true);
+        const hasMore = await onLoadMoreSessions(sessions.length);
+
+        if (!hasMore) {
+            setLoadMore(false);
+        }
+        setLoading(false);
+    };
+
     return (
         <div className='Feed'>
-            {(sessions && categories) ? renderSessions() : <Spinner />}
-            {infoSessionModal && <Modal modal='infoSessionModal'><Session session={selectedSession} /></Modal>}
+            {(sessions && categories) ? renderSessions() : <Spinner/>}
+            {infoSessionModal && <Modal modal='infoSessionModal'><Session session={selectedSession}/></Modal>}
+            {loadMore && <div className='Feed__load-more' onClick={handleLoadMoreSessions}>{
+                !loading ? 'טען עוד..' :    <Spinner />
+            }</div>}
         </div>
     )
 };

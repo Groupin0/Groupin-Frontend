@@ -36,10 +36,10 @@ const SessionCube = ({data, className, onClickSession}) => {
                 </div>
                 <div className='SessionCube__date'>
                     <span>
-                        <Moment tz="Asia/Jerusalem" format='HH:mm'>{start_date}</Moment>
+                        <Moment format='HH:mm'>{start_date}</Moment>
                     </span>
                     <span>
-                        <Moment format='DD/MM/YYYY'>{start_date}</Moment>
+                        <Moment tz="Asia/Jerusalem" format='DD/MM/YYYY'>{start_date}</Moment>
                     </span>
                 </div>
             </div>

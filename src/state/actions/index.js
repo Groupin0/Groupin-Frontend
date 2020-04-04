@@ -22,6 +22,7 @@ export const getCategories = () => async dispatch => {
 };
 
 export const getSessions = (start = 0, count = 20) => async dispatch => {
+    let response = ''
     const query = gql`{
     FrontSessions(start:${start}, count:${count}) {
         id
@@ -34,10 +35,31 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
     }
 }`;
 
-    let response = await client.query({query});
-    console.log(response.data);
+    response = await client.query({query});
 
     dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.FrontSessions})
+};
+
+export const getMoreSessions = (start, count=20) => async dispatch => {
+    let response = ''
+    const query = gql`{
+    FrontSessions(start:${start}, count:${count}) {
+        id
+        title
+        description
+        start_date
+        category
+        capacity
+        img_source
+    }
+}`;
+    response = await client.query({query});
+    if (response.data.FrontSessions.length > 0) {
+        await dispatch({type: sessionActions.LOAD_MORE_SESSIONS, payload: response.data.FrontSessions});
+        return true;
+    } else {
+        return false;
+    }
 };
 
 export const getUserSessions = id => async dispatch => {

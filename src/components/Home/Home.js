@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import Feed from "../Feed/Feed";
 import {useDispatch} from "react-redux";
-import {getSessions} from "../../state/actions";
+import {getMoreSessions, getSessions} from "../../state/actions";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -10,11 +10,17 @@ const Home = () => {
         onGetSessions();
     }, []);
 
+    const onLoadMoreSessions = async (start) => {
+        if (start) {
+            return await dispatch(getMoreSessions(start));
+        }
+    };
+
     const onGetSessions = async () => {
         await dispatch(getSessions());
     };
 
-    return <Feed/>
+    return <Feed loadMoreSession={onLoadMoreSessions}/>
 };
 
 export default Home;

@@ -20,10 +20,25 @@ const Feed = ({isUserSessions}) => {
             data={{...session, category: categories.find(c => c.id === session.category)}}
             className={(i === 0 && !isUserSessions) ? 'SessionCube__first' : ''} key={i}/>
     });
+
+    const onLoadMoreSession = async () => {
+        setLoading(true);
+        const result = await loadMoreSession(sessions.length);
+
+        if (!result) {
+            setLoadMore(false)
+        }
+        setLoading(false)
+    };
+
+    console.log(loadMore);
     return (
         <div className='Feed'>
             {(sessions && categories) ? renderSessions() : <Spinner />}
             {isModalOpen && <Modal><Session /></Modal>}
+            {(sessions && categories) ? renderSessions() : <Spinner/>}
+            {loadMore && <div className='Feed__load-more' onClick={onLoadMoreSession}>{!loading ? 'טען עוד מפגשים...' :
+                <Spinner/>}</div>}
         </div>
     )
 };

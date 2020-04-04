@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './App.scss';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import {getCategories, getUser} from "../state/actions";
 import {useDispatch} from "react-redux";
@@ -30,7 +30,8 @@ const App = () => {
           <Navbar />
           {!loading && <main className='App__main'>
             <Switch>
-                <Route path='/' exact render={() => <Home />} />
+                <Route path='/' exact ><Redirect to='/home' /></Route>
+                <Route path='/home' exact render={() => <Home />} />
                 <Route path='/login' exact render={() => <Login />} />
                 <Route path='/my-sessions' exact render={() => <MySessions />} />
                 <Route path='/#_=_' exact>

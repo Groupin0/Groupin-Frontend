@@ -5,7 +5,7 @@ export default (state=[], action) => {
         case sessionActions.FETCH_SESSIONS:
             return action.payload;
         case sessionActions.CREATE_SESSION:
-            return [...state, action.payload];
+            return [action.payload, ...state];
         default:
             return state
     }

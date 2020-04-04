@@ -14,12 +14,11 @@ import {createSession, isLoading} from "../../../state/actions";
 
 const AddSession = () => {
     const dispatch = useDispatch();
-    const [selectedCategoryId, setSelectedCategoryId] = useState(1);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const categories = useSelector(state => state.categories);
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (formValues) => {
-        dispatch(isLoading(true));
         if (selectedCategoryId === null) {
             setSelectedCategoryId(-1);
             return;

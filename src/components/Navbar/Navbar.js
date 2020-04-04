@@ -46,9 +46,7 @@ const Navbar = () => {
             <div className='Navbar__account'>
                 {renderNavbar()}
             </div>
-            {isModalOpen && <Modal>
-                {addSessionModal && <AddSession modal='addSessionModal' />}
-            </Modal>}
+            {addSessionModal && <Modal modal='addSessionModal'><AddSession /></Modal>}
         </nav>
     )
 };

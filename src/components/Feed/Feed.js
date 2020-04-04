@@ -33,7 +33,7 @@ const Feed = ({isUserSessions}) => {
     return (
         <div className='Feed'>
             {(sessions && categories) ? renderSessions() : <Spinner />}
-            {isModalOpen && <Modal><Session session={selectedSession} /></Modal>}
+            {infoSessionModal && <Modal modal='infoSessionModal'><Session session={selectedSession} /></Modal>}
         </div>
     )
 };

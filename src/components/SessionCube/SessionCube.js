@@ -9,11 +9,6 @@ import Modal from "../Shared/Modal/Modal";
 import AddSession from "../Shared/AddSession/AddSession";
 
 const SessionCube = ({data, className}) => {
-    // const {isModalOpen, infoSessionModal} = useSelector(state  => ({
-    //     isModalOpen: state.modals.isModalOpen,
-    //     infoSessionModal: state.modals.infoSessionModal
-    // }), shallowEqual);
-    const dispatch = useDispatch();
     const {category, title, description, start_date, img_source} = data;
 
     const renderLimitWords = useCallback((text, limit) => {

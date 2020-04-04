@@ -9,3 +9,5 @@ const Session = () => {
         </div>
     )
 };
+
+export default Session;

@@ -5,6 +5,8 @@ import 'moment-timezone';
 import Button from '../Button/Button.js';
 import useResource from "../../hooks/useResources";
 
+const session_url = null;
+
 const Session = ({session}) => {
     const {category, title, start_date, end_date, capacity, description} = session;
     console.log(capacity);
@@ -35,12 +37,9 @@ const Session = ({session}) => {
                         </div>
                     </div>
                     <div className='Session__header--action'>
-                        { session_url 
-                            ? <a target= '_blank' href={ session_url }>
-                                <Button label='לצפייה במפגש' className='Button__black '/>
-                            </a>
-                            : <Button label='לצפייה במפגש' className='Button__disabled ' disabled/>
-                        }
+                        <a target= '_blank' href={ session_url }>
+                            <Button label='לצפייה במפגש' className='Button__black' isDisabled={ !session_url } />
+                        </a>
                     </div>
                 </div>
                 <div className='Session__description'>

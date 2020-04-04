@@ -8,8 +8,13 @@
     font-size: 1.8rem;
     transition: all 0.3s ease;
 
+    &:disabled {
+        background-color: grey;
+        color: white;
+    }
+
     &:focus {outline: none}
-    &:hover , &:active {
+    &:hover:not([disabled]) , &:active:not([disabled]) {
             transform: scale(1.04);
     }
 
@@ -23,13 +28,4 @@
         color: black;
     }
 
-    &__disabled {
-        background-color: grey;
-        color: white;
-        
-        &:focus {outline: none}
-        &:hover , &:active {
-            transform: none;
-        }
-    }
 }

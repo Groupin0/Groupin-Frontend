@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import './Feed.scss';
 import SessionCube from "../SessionCube/SessionCube";
-import {shallowEqual, useSelector} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import Spinner from "../Shared/Spinner/Spinner";
 import Modal from "../Shared/Modal/Modal";
 import Session from "../Session/Session";
+import {openModal} from "../../state/actions";
 
 const Feed = ({isUserSessions}) => {
+    const [selectedSession, setSelectedSession] = useState(null);
+    const dispatch = useDispatch();
     const {isModalOpen, infoSessionModal, categories, sessions} = useSelector(state => ({
         isModalOpen: state.modals.isModalOpen,
         infoSessionModal: state.modals.infoSessionModal,
@@ -16,29 +19,21 @@ const Feed = ({isUserSessions}) => {
 
     const renderSessions = () => sessions.map((session, i) => {
 
+        const onSelectedSession = (session) => {
+            setSelectedSession(session);
+            dispatch(openModal('infoSessionModal'));
+
+        };
+
         return <SessionCube
             data={{...session, category: categories.find(c => c.id === session.category)}}
+            onClickSession={onSelectedSession}
             className={(i === 0 && !isUserSessions) ? 'SessionCube__first' : ''} key={i}/>
     });
-
-    const onLoadMoreSession = async () => {
-        setLoading(true);
-        const result = await loadMoreSession(sessions.length);
-
-        if (!result) {
-            setLoadMore(false)
-        }
-        setLoading(false)
-    };
-
-    console.log(loadMore);
     return (
         <div className='Feed'>
             {(sessions && categories) ? renderSessions() : <Spinner />}
-            {isModalOpen && <Modal><Session /></Modal>}
-            {(sessions && categories) ? renderSessions() : <Spinner/>}
-            {loadMore && <div className='Feed__load-more' onClick={onLoadMoreSession}>{!loading ? 'טען עוד מפגשים...' :
-                <Spinner/>}</div>}
+            {isModalOpen && <Modal><Session session={selectedSession} /></Modal>}
         </div>
     )
 };

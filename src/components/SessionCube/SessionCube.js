@@ -8,8 +8,12 @@ import {openModal} from "../../state/actions";
 import Modal from "../Shared/Modal/Modal";
 import AddSession from "../Shared/AddSession/AddSession";
 
-const SessionCube = ({data, className}) => {
+const SessionCube = ({data, className, onClickSession}) => {
     const {category, title, description, start_date, img_source} = data;
+
+    const handleClickSession = () => {
+        onClickSession(data)
+    };
 
     const renderLimitWords = useCallback((text, limit) => {
         if (text && text.length > limit) {
@@ -19,15 +23,15 @@ const SessionCube = ({data, className}) => {
     }, []);
 
 
-    const sessionPic = useResource(category.name);
+    const categoryImg = useResource(category.name);
 
     return (
         <div className={`SessionCube ${className}`}>
             <div className='SessionCube__img'
-                 style={{backgroundImage: `url(${img_source !== null ? img_source : sessionPic})`}} />
+                 style={{backgroundImage: `url(${img_source !== null ? img_source : categoryImg})`}} />
             <div className='SessionCube__content'>
                 <div className='SessionCube__text'>
-                    <h1 className='SessionCube__text--title'>{renderLimitWords(title, 25)}</h1>
+                    <h1 className='SessionCube__text--title' onClick={handleClickSession} >{renderLimitWords(title, 25)}</h1>
                     <p className='SessionCube__text--description'>{renderLimitWords(description, 100)}</p>
                 </div>
                 <div className='SessionCube__date'>

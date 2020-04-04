@@ -22,7 +22,7 @@ export const getCategories = () => async dispatch => {
 };
 
 export const getSessions = (start = 0, count = 20) => async dispatch => {
-    let response = ''
+    let response = '';
     const query = gql`{
     FrontSessions(start:${start}, count:${count}) {
         id
@@ -41,7 +41,7 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
 };
 
 export const getMoreSessions = (start, count=20) => async dispatch => {
-    let response = ''
+    let response = '';
     const query = gql`{
     FrontSessions(start:${start}, count:${count}) {
         id
@@ -73,6 +73,7 @@ export const getUserSessions = id => async dispatch => {
                             category
                             capacity
                             img_source
+                            platform_media_id
               }
   }`;
   

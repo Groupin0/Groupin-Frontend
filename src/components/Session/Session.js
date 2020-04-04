@@ -3,21 +3,18 @@ import './Session.scss';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import Button from '../Button/Button.js';
+import useResource from "../../hooks/useResources";
 
-const Session = () => {
+const Session = ({session}) => {
+    const {category, title, start_date, end_date, capacity, description} = session;
+    console.log(capacity);
 
-    const image = 'https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg',
-        title = 'משחקים',
-        description = 'קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. ',
-        start_date = '1976-04-19T12:59-0500',
-        end_date = new Date(),
-        capacity = '120',
-        session_url = '';
+    const categoryImg = useResource(category.name);
 
     return (
         <div className='Session'>
             <div className='Session__img'
-                style={{backgroundImage: `url("${ image }")`}} />
+                style={{backgroundImage: `url("${ categoryImg }")`}} />
             <div className='Session__content'>
                 <div className='Session__header'>
                     <div>
@@ -28,15 +25,12 @@ const Session = () => {
                             </div>
                             <div className='Session__header--text'>
                                 בין השעות
-                                <Moment format= ' hh:mm '>{ start_date }</Moment>
+                                <Moment format= ' HH:mm '>{ start_date }</Moment>
                                 -
-                                <Moment format= ' hh:mm '>{ end_date }</Moment>
+                                <Moment format= ' HH:mm '>{ end_date }</Moment>
                             </div>
                             <div className='Session__header--text'>
-                                { capacity
-                                    ? <p>עד { capacity } משתתפים</p>
-                                    : <p>אין הגבלת משתתפים</p>
-                                }
+                                <p>{capacity ? `מוגבל ל-${capacity} משתתפים` : 'ללא הגבלת משתתפים'}</p>
                             </div>
                         </div>
                     </div>

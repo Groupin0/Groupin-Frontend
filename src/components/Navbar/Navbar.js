@@ -25,7 +25,7 @@ const Navbar = () => {
         if (user && user.id !== null) {
             accountPanel = <>
                 <Button label='צור מפגש' className='Button__black' onClick={() => dispatch(openModal('addSessionModal'))} />
-                <UserButton userName={user.display_name} userImage={user.img_source} />
+                <UserButton userId={user.id} userName={user.display_name} userImage={user.img_source} />
             </>;
         }
 

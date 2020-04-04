@@ -1,5 +1,6 @@
 import ApiService, {baseUrl, client} from "../../api";
 import {gql} from "apollo-boost";
+import history from '../../history';
 import {categoriesActions, loadingAction, modalActions, sessionActions, userActions} from "./enums";
 
 export const getCategories = () => async dispatch => {
@@ -38,16 +39,27 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
     dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.FrontSessions})
 };
 
-export const openModal = (modal) => dispatch => {
-  dispatch({type: modalActions.OPEN_MODAL, payload: modal})
-};
+export const getUserSessions = id => async dispatch => {
+  let response = '';
+  const query = gql`{
+              SessionsByUser(user_id:${id}, start:0, count:20){
+                            id
+                            title
+                            description
+                            start_date
+                            category
+                            capacity
+                            img_source
+              }
+  }`;
+  
+  try {
+      response = await client.query({query});
 
-export const closeModal = (modal) => dispatch => {
-    dispatch({type: modalActions.CLOSE_MODAL, payload: modal})
-};
-
-export const switchLoading = (isLoading) => dispatch => {
-    dispatch({type: loadingAction, payload: isLoading});
+      dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.SessionsByUser})
+  } catch (e) {
+      
+  }
 };
 
 export const getUser = () => async dispatch => {
@@ -69,7 +81,15 @@ export const getUser = () => async dispatch => {
     }
 };
 
-export const logout = () => async dispatch => {
+export const openModal = (modal) => dispatch => {
+    dispatch({type: modalActions.OPEN_MODAL, payload: modal})
+};
+
+export const closeModal = (modal) => dispatch => {
+    dispatch({type: modalActions.CLOSE_MODAL, payload: modal})
+};
+
+export const logout = () => {
     try {
         window.open(`${baseUrl}/users/logout`, '_self')
 
@@ -77,3 +97,35 @@ export const logout = () => async dispatch => {
         console.error(e)
     }
 };
+
+export const isLoading = (isLoading) => dispatch => {
+    dispatch({type: loadingAction, payload: isLoading});
+};
+
+export const createSession = data => async dispatch => {
+        let response = '';
+        const CREATE_SESSION = gql`
+                   mutation SubmitCreateSession($title: String!, $category: ID!) {
+                     createSession(title: $title, category: $category) {
+                        id
+                        title
+                        description
+                        start_date
+                        category
+                        capacity
+                        img_source
+                      }
+                    }`;
+        try {
+            response = await client.mutate(({mutation: CREATE_SESSION, variables: data}));
+
+            dispatch({type: sessionActions.CREATE_SESSION, payload: response.data.createSession});
+            setTimeout(() => {
+                history.push('/my-sessions');
+                dispatch(closeModal('addSessionModal'));
+                dispatch(isLoading(false));
+            }, 3000);
+        } catch (e) {
+            console.dir(response);
+        }
+    };

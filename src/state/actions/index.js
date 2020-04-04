@@ -35,6 +35,7 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
 }`;
 
     let response = await client.query({query});
+    console.log(response.data);
 
     dispatch({type: sessionActions.FETCH_SESSIONS, payload: response.data.FrontSessions})
 };

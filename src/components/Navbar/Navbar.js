@@ -38,9 +38,9 @@ const Navbar = () => {
 
     return (
         <nav className='Navbar'>
-            <Link to='/' className='Navbar__home'>
+            <div className='Navbar__home' onClick={() => history.push('/home')}>
                 <Logo />
-            </Link>
+            </div>
 
             <SearchBar className='Navbar__searchbar' />
             <div className='Navbar__account'>

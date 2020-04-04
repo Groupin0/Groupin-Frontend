@@ -7,8 +7,12 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getSessions());
-    });
+        onGetSessions();
+    }, []);
+
+    const onGetSessions = async () => {
+        await dispatch(getSessions());
+    };
 
     return <Feed/>
 };

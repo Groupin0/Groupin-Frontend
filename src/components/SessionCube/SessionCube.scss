@@ -1,0 +1,95 @@
+.SessionCube {
+  width: 350px;
+  height: 440px;
+  margin-bottom: 16px;
+  text-align: right;
+  border: 1px solid black;
+  border-radius: 4px;
+  color: #2699FB;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 3px 8px .5px rgba(0,0,0, .2);
+
+  &__first {
+    position: relative;
+    width: 720.6px;
+    border: none;
+    display: flex;
+    align-items: flex-end;
+    background-color: black;
+    color: white;
+
+    .SessionCube {
+      &__img, &__content {
+        width: 100%;
+      }
+
+      &__img {
+        position: absolute;
+        height: 100%;
+        opacity: .3;
+      }
+
+      &__content {
+        position: relative;
+        border: none;
+        //height: 40%;
+        bottom: 0;
+        z-index: 10000;
+      }
+      &__text, &__date {width: 75%;}
+
+      &__text {
+        & > h1 {
+          font-size: 3.5rem;
+          font-weight: normal;
+        }
+        & > p  {line-height: 1.8}
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    & > img {
+      width: 100%;
+      height: 100%
+    }
+  }
+
+  &__content {
+    height: 50%;
+    border-top: 2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__text {
+    width: 85%;
+    flex: 1;
+    margin: 0 auto;
+      & > h1 {
+        font-size: 1.8rem;
+        margin: 20px 0;
+      }
+      & > p  {
+        line-height: 2.4;
+        font-size: 1.4rem
+      }
+  }
+
+  &__date {
+    width: 85%;
+    margin: 0 auto;
+    flex: .2;
+    font-size: 1.4rem;
+
+    & > span:first-child { margin-right: 50px}
+  }
+}

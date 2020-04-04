@@ -1,0 +1,66 @@
+@import "../variables";
+
+.UserButton {
+  position: relative;
+  margin-right: 155px;
+
+  &__user {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+
+    &--no-pic {
+      background-color: white;
+    }
+
+    &--first-letter {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    font-size: 1.8rem;
+    position: absolute;
+    left: 0;
+    top: 110%;
+    background-color: white;
+    width: auto;
+    min-width: 150px;
+    z-index: 10000;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &--overlay {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    & > li:not(:first-child) {
+      cursor: pointer;
+      padding: 10px;
+
+      &:hover {
+        background-color: $lightBlue;
+      }
+    }
+
+    &--open {
+      display: block !important;
+    }
+  }
+}

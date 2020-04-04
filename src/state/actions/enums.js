@@ -15,5 +15,6 @@ export const sessionActions = {
 };
 
 export const userActions = {
-    FETCH_USER: '[USER] Fetch User'
+    FETCH_USER: '[USER] Fetch User',
+    LOGOUT_USER: '[USER] Logout User'
 };

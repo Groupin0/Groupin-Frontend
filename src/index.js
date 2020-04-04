@@ -9,7 +9,7 @@ import {Router} from "react-router-dom";
 
 // GraphQL provider
 import { ApolloProvider } from '@apollo/react-hooks';
-import client from "./api";
+import {client} from "./api";
 
 // Redux Provider
 import {Provider} from 'react-redux';

@@ -1,12 +1,12 @@
 import React from 'react';
 import '../Input.scss';
 
-const InputText = ({name, className, placeholder, register}) => {
+const InputText = ({name, className, placeholder, register, type='text'}) => {
     return (
         <input
             autoComplete='off'
             name={ name } 
-            type= 'text'
+            type= {type}
             ref={register}
             className= { `Input ${ className }` }
             placeholder={placeholder}

@@ -1,0 +1,52 @@
+.Login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    width: 400px;
+    height: 300px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 3px rgba(0,0,0, .1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+    width: 70%;
+    height: auto;
+    min-height: 10%;
+    padding: 15px;
+    background-color: #3b5998;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 1px 10px 7px rgba(0,0,0, .1);
+    border-radius: 4px;
+    backface-visibility: hidden;
+    transition: width .4s .2s, min-height .4s .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    & > img {
+      margin-left: 10px;
+      width: 1.4rem;
+    }
+  }
+}

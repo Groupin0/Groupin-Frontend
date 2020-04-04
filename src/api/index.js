@@ -1,9 +1,21 @@
-import ApolloClient from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { createHttpLink } from 'apollo-link-http';
+import axios from 'axios';
 
-const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+export const baseUrl = 'http://localhost:4000';
+
+const link = createHttpLink({
+    uri: `${baseUrl}/graphql`,
+    credentials: 'include'
 });
 
+export const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    link,
+});
 
-
-export default client;
+export default axios.create({
+    baseURL: baseUrl,
+    headers: {'X-Requested-With': 'XMLHttpRequest'}
+});

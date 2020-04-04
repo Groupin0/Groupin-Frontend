@@ -1,6 +1,6 @@
-import client from "../../api";
+import ApiService, {baseUrl, client} from "../../api";
 import {gql} from "apollo-boost";
-import {categoriesActions, loadingAction, modalActions, sessionActions} from "./enums";
+import {categoriesActions, loadingAction, modalActions, sessionActions, userActions} from "./enums";
 
 export const getCategories = () => async dispatch => {
     const query = gql`{
@@ -48,4 +48,32 @@ export const closeModal = (modal) => dispatch => {
 
 export const switchLoading = (isLoading) => dispatch => {
     dispatch({type: loadingAction, payload: isLoading});
+};
+
+export const getUser = () => async dispatch => {
+    const query = gql`{
+        UserDetailed {
+            id
+            display_name
+            img_source
+        }
+    }`;
+    let response = '';
+
+    try {
+        response = await client.query({query});
+
+        dispatch({type: userActions.FETCH_USER, payload: response.data.UserDetailed});
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+export const logout = () => async dispatch => {
+    try {
+        window.open(`${baseUrl}/users/logout`, '_self')
+
+    } catch (e) {
+        console.error(e)
+    }
 };

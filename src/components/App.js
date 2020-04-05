@@ -5,7 +5,6 @@ import Navbar from "./Navbar/Navbar";
 import {getCategories, getUser} from "../state/actions";
 import {useDispatch} from "react-redux";
 import Login from "./Login/Login";
-import history from '../history';
 import MySessions from "./MySessions/MySessions";
 import Home from "./Home/Home";
 
@@ -14,7 +13,6 @@ const App = () => {
     const dispath = useDispatch();
 
     useEffect(() => {
-        console.log('test');
         fetchData();
     }, []);
 
@@ -34,9 +32,6 @@ const App = () => {
                 <Route path='/home' exact render={() => <Home />} />
                 <Route path='/login' exact render={() => <Login />} />
                 <Route path='/my-sessions' exact render={() => <MySessions />} />
-                <Route path='/#_=_' exact>
-                {history.push('/home')}
-            </Route>
             </Switch>
         </main>}
       </div>

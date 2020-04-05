@@ -5,11 +5,11 @@ import 'moment-timezone';
 import Button from '../Button/Button.js';
 import useResource from "../../hooks/useResources";
 
-const session_url = null;
+
 
 const Session = ({session}) => {
-    const {category, title, start_date, end_date, capacity, description} = session;
-    console.log(capacity);
+    const {category, title, start_date, end_date, capacity, description, platform_media_id} = session;
+    const renderZoomLink = () => platform_media_id ? `https://zoom.us/j/${platform_media_id}` : null;
 
     const categoryImg = useResource(category.name);
 
@@ -37,8 +37,8 @@ const Session = ({session}) => {
                         </div>
                     </div>
                     <div className='Session__header--action'>
-                        <a target= '_blank' href={ session_url }>
-                            <Button label='לצפייה במפגש' className='Button__black' isDisabled={ !session_url } />
+                        <a target= '_blank' href={ renderZoomLink()}>
+                            <Button label='לצפייה במפגש' className='Button__black' isDisabled={ !platform_media_id } />
                         </a>
                     </div>
                 </div>

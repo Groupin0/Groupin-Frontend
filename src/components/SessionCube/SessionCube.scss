@@ -1,4 +1,7 @@
+@import "../variables";
+
 .SessionCube {
+  position: relative;
   width: 350px;
   height: 440px;
   margin: 0 7px 12px 10px;
@@ -49,6 +52,31 @@
         & > p  {line-height: 1.8}
       }
     }
+  }
+
+  &__edit {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $blue;
+    transform: translateY(-50px);
+    transition: transform .3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > i {
+      font-size: 1.8rem;
+      color: white;
+    }
+  }
+
+  &:hover &__edit {
+    transform: translateY(15px);
   }
 
   &__img {

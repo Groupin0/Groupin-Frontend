@@ -1,6 +1,7 @@
 import React from 'react';
 import './Modal.scss';
 import ReactDOM from 'react-dom';
+import history from '../../../history';
 import {useDispatch, useSelector} from "react-redux";
 import {closeModal} from "../../../state/actions";
 import Spinner from "../Spinner/Spinner";

@@ -30,14 +30,11 @@
         opacity: 0;
         background-color: white;
         border-radius: 25px;
-        margin:10% auto;
+        margin: 2% auto;
         display: inline-block;
         transition: all .3s;
         animation: fadeIn .6s .2s forwards ease-out;
 
-        &--header, &--body, &--actions {
-            padding: 10px;
-        }
     }
 
 }

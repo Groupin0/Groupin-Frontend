@@ -28,7 +28,6 @@ const AddSession = () => {
             category: selectedCategoryId
         };
 
-        console.log(finalForm);
         dispatch(createSession(finalForm));
     };
 
@@ -44,27 +43,14 @@ const AddSession = () => {
                         className={`Form__input ${errors.title ? 'Form__input--error' : ''}`} />
                         {errors.title && <small className='Form__error'>{errorMessages.title[errors.title.type]}</small>}
                 </div>
-                {/*<div className='Form__row'>*/}
-                {/*    <InputDate*/}
-                {/*        register={register({required: true})}*/}
-                {/*        name= 'start_date'*/}
-                {/*        placeholder= 'הכנס תאריך מפגש'*/}
-                {/*        className={`Form__input Form__input--small ${(errors.start_date || errors.time) ? 'Form__input--error' : ''}`} />*/}
-                {/*    <InputTime*/}
-                {/*        register={register({required: true})}*/}
-                {/*        name= 'start_time'*/}
-                {/*        placeholder= 'שעת מפגש'*/}
-                {/*        className={`Form__input Form__input--small ${(errors.start_date || errors.start_time) ? 'Form__input--error' : ''}`} />*/}
-                {/*    {(errors.start_date || errors.start_time) && <small className='Form__error'>{errorMessages.start_date}</small>}*/}
-                {/*</div>*/}
             <div className='Form__row'>
                 <Dropdown
                     setValue={setSelectedCategoryId}
                     name='category'
-                    defaultVal={selectedCategoryId}
+                    // defaultVal={selectedCategoryId}
                     options= {categories}
                     placeholder='בחר קטגוריה'
-                    className={`Form__input ${errors.title ? 'Form__input--error' : ''}`} />
+                    className={`Form__input ${selectedCategoryId === -132353453 ? 'Form__input--error' : ''}`} />
                 {selectedCategoryId === -1 && <small className='Form__error'>{errorMessages.category}</small>}
             </div>
                 <Button label='צור מפגש' type='submit' className='Button__black Form__button'/>

@@ -22,6 +22,5 @@ export const prapreEditForm = (form, descriptionText, category, session_id) => {
     delete formHolder.start_date;
     delete formHolder.platform_url;
 
-    console.log(formHolder);
     return formHolder;
 };

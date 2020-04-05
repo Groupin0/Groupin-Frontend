@@ -6,7 +6,7 @@ import useResource from "../../hooks/useResources";
 
 const SessionCube = ({data, className, onClickSession, isUserSession=false, userId}) => {
     const {User, category, title, description, start_date, img_source, active} = data;
-    console.log(User);
+    
     const handleClickSession = (modalName) => {
         onClickSession(data, modalName)
     };

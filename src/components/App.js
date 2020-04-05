@@ -32,9 +32,6 @@ const App = () => {
                 <Route path='/home' exact render={() => <Home />} />
                 <Route path='/login' exact render={() => <Login />} />
                 <Route path='/my-sessions' exact render={() => <MySessions />} />
-            {/*    <Route path='/#_=_' exact>*/}
-            {/*    {history.push('/home')}*/}
-            {/*</Route>*/}
             </Switch>
         </main>}
       </div>

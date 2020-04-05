@@ -203,7 +203,7 @@ export const openModal = (modal) => dispatch => {
 export const closeModal = (modal) => dispatch => {
     dispatch({type: modalActions.CLOSE_MODAL, payload: modal})
 };
-K
+
 export const logout = () => {
     try {
         window.open(`${baseUrl}/users/logout`, '_self')

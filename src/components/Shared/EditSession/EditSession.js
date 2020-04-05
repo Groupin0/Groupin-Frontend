@@ -16,8 +16,6 @@ import {editSession} from "../../../state/actions";
 
 const EditSession = ({session}) => {
     const {id, title, start_date, end_date, category, capacity, platform_media_id, description, active} = session;
-    // const renderDuration = start_date - end_date;
-    console.log('original date: ', start_date);
     const dispatch = useDispatch();
     const [selectedCategoryId, setSelectedCategoryId] = useState(category);
     const [descriptionText, setDescriptionText] = useState(description);
@@ -27,7 +25,6 @@ const EditSession = ({session}) => {
 
     const onSubmit = (form) => {
         const finalForm = prapreEditForm(form, descriptionText, selectedCategoryId, id);
-        console.log(finalForm);
         dispatch(editSession(finalForm));
     };
 

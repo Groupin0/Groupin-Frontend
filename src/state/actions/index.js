@@ -25,7 +25,6 @@ export const getSessionBySearch = search_query => async dispatch => {
     dispatch(isLoading(true));
 
     let response = '';
-    console.log(search_query);
     const query = gql`{
     SearchSessions(search_query: "${search_query}", start:0, count:20) {
         id
@@ -242,7 +241,7 @@ export const createSession = data => async dispatch => {
         dispatch(isLoading(false));
     } catch (e) {
         dispatch(isLoading(false));
-        console.dir(response);
+        console.error(response);
     }
 };
 
@@ -266,6 +265,6 @@ export const editSession = data => async dispatch => {
         }
     } catch (e) {
         dispatch(isLoading(false));
-        console.dir(response);
+        console.error(response);
     }
 };

@@ -3,7 +3,6 @@ import './Dropdown.scss';
 import {Select} from "react-dropdown-select";
 
 const Dropdown = ({className, placeholder, options, setValue, defaultVal = null}) => {
-    console.log(defaultVal);
     let defOption = '';
 
     if (defaultVal !== null) {

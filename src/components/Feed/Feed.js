@@ -19,7 +19,7 @@ const removeQueryParam = (param) => {
     params.delete(param)
 };
 
-const Feed = ({isUserSessions, onLoadMoreSessions}) => {
+const Feed = ({isUserSessions, onLoadMoreSessions, userId}) => {
     const {infoSessionModal, editSessionModal, categories, sessions} = useSelector(state => ({
         containerLoading: state.loading,
         infoSessionModal: state.modals.infoSessionModal,
@@ -55,6 +55,7 @@ const Feed = ({isUserSessions, onLoadMoreSessions}) => {
         };
 
         return <SessionCube
+            userId={userId}
             data={{...session, category: categories.find(c => c.id === session.category)}}
             onClickSession={onSelectedSession}
             isUserSession={isUserSessions}

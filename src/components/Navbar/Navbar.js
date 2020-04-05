@@ -20,8 +20,8 @@ const Navbar = () => {
     const dispatch = useDispatch();
 
     const onSearchQuery = async query => {
+        history.push(`/search?q=${query}`);
       await dispatch(getSessionBySearch(query))
-
     };
 
     const renderNavbar = () => {

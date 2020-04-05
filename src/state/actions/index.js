@@ -36,6 +36,8 @@ export const getSessionBySearch = search_query => async dispatch => {
         capacity
         img_source
         platform_media_id
+        platform_media_pwd
+        User{id}
     }
 }`;
 
@@ -60,6 +62,8 @@ export const getSessions = (start = 0, count = 20) => async dispatch => {
         capacity
         img_source
         platform_media_id
+        platform_media_pwd
+        User{id}
     }
 }`;
 
@@ -82,6 +86,8 @@ export const getSessionById = id => async disatch => {
         capacity
         img_source
         platform_media_id
+        platform_media_pwd
+        User{id}
     }
 }`;
 
@@ -109,6 +115,8 @@ export const getMoreSessions = (start, count = 20) => async dispatch => {
         capacity
         img_source
         platform_media_id
+        platform_media_pwd
+        User{id}
     }
 }`;
     response = await client.query({query});
@@ -136,7 +144,9 @@ export const getUserSessions = (id, start = 0) => async dispatch => {
                             capacity
                             img_source
                             platform_media_id
+                            platform_media_pwd
                             active
+                            User{id}
               }
   }`;
 
@@ -164,7 +174,9 @@ export const getMoreSessionsByUserId = (id, start, count = 20) => async dispatch
         capacity
         img_source
         platform_media_id
+        platform_media_pwd
         active
+        User{id}
     }
 }`;
     response = await client.query({query});
@@ -249,8 +261,8 @@ export const editSession = data => async dispatch => {
     dispatch(isLoading(true));
     let response = '';
     const EDIT_SESSION = gql`
-                   mutation SubmitEditSession($session_id: ID!, $title: String, $description: String, $category: ID, $time_range: TimeRange, $capacity: Int, $platform_media_id: String, $active: Boolean) {
-                     editSession(session_id: $session_id, title: $title, description: $description, category: $category, time_range: $time_range, capacity: $capacity, platform_media_id: $platform_media_id, active: $active)
+                   mutation SubmitEditSession($session_id: ID!, $title: String, $description: String, $category: ID, $time_range: TimeRange, $capacity: Int, $platform_media_id: String, $platform_media_pwd: String, $active: Boolean) {
+                     editSession(session_id: $session_id, title: $title, description: $description, category: $category, time_range: $time_range, capacity: $capacity, platform_media_id: $platform_media_id,  platform_media_pwd:  $platform_media_pwd, active: $active)
                                 }`;
     try {
         response = await client.mutate(({mutation: EDIT_SESSION, variables: data}));

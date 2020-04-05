@@ -7,12 +7,10 @@ const InputDate = ({name = 'text', className = '', register, placeholder, defaul
         <input
             name={ name }
             defaultValue={renderDate(defaultValue)}
-            type= 'text'
+            type= 'date'
             className= { `Input ${ className }` }
             ref={register}
             placeholder={placeholder}
-            onBlur={(e) => {e.target.type='text'}}
-            onFocus={(e) => {e.target.type='date'}}
         />
     );
 };

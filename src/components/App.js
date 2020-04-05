@@ -30,6 +30,7 @@ const App = () => {
             <Switch>
                 <Route path='/' exact ><Redirect to='/home' /></Route>
                 <Route path='/home' exact render={() => <Home />} />
+                <Route path='/search' exact render={() => <Home />} />
                 <Route path='/login' exact render={() => <Login />} />
                 <Route path='/my-sessions' exact render={() => <MySessions />} />
             </Switch>

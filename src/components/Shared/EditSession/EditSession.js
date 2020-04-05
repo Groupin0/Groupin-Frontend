@@ -12,10 +12,11 @@ import InputTextArea from "../../Feilds/InputTextArea/InputTextArea";
 import InputCheckbox from "../../Feilds/InputCheckbox/InputCheckbox";
 import {prapreEditForm} from "../../../services/formService";
 import {editSession} from "../../../state/actions";
+import {importZoomUrl} from "../../../services/platformService";
 
 
 const EditSession = ({session}) => {
-    const {id, title, start_date, end_date, category, capacity, platform_media_id, description, active} = session;
+    const {id, title, start_date, end_date, category, capacity, platform_media_id, platform_media_pwd, description, active} = session;
     const dispatch = useDispatch();
     const [selectedCategoryId, setSelectedCategoryId] = useState(category);
     const [descriptionText, setDescriptionText] = useState(description);
@@ -83,12 +84,12 @@ const EditSession = ({session}) => {
                 </div>
                 <div className='Form__row'>
                     <InputText
-                        register={register({required: true})}
-                        name='platform_media_id'
-                        defaultValue={platform_media_id}
-                        placeholder='הכנס את מספר המזהה של המפגש (ZOOM ID)'
-                        className={`Form__input ${errors.platform_media_id ? 'Form__input--error' : ''}`}/>
-                        {errors.platform_media_id && <small className='Form__error'>{errorMessages.platform_media_id}</small>}
+                        register={register({pattern: /zoom.us\/j\/(\w+)(\?pwd=(.*))*/})}
+                        name='platform_url'
+                        defaultValue={platform_media_id ? importZoomUrl(platform_media_id, platform_media_pwd) : ''}
+                        placeholder='הכנס כתובת מפגש (ZOOM URL)'
+                        className={`Form__input ${errors.platform_url ? 'Form__input--error' : ''}`}/>
+                        {errors.platform_url && <small className='Form__error'>{errorMessages.platform_url}</small>}
                 </div>
                 <div className='Form__row'>
                     <InputTextArea
@@ -106,7 +107,7 @@ const EditSession = ({session}) => {
                         register={register}
                     />
                 </div>
-                <Button label='צור מפגש' type='submit' className='Button__black Form__button'/>
+                <Button label='סיים' type='submit' className='Button__black Form__button'/>
             </form>
         </div>
     )

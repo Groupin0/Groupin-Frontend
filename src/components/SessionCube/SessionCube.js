@@ -23,7 +23,7 @@ const SessionCube = ({data, className, onClickSession, isUserSession=false, user
 
     return (
         <div className={`SessionCube ${className}`}>
-            {(User && User.id === userId) && <div className="SessionCube__edit" onClick={() => handleClickSession('editSessionModal')}><i className="far fa-edit" /></div>}
+            {(isUserSession) && <div className="SessionCube__edit" onClick={() => handleClickSession('editSessionModal')}><i className="far fa-edit" /></div>}
             <div className='SessionCube__img'
                  style={{backgroundImage: `url(${img_source !== null ? img_source : categoryImg})`}} />
             <div className='SessionCube__content'>

@@ -8,6 +8,10 @@ export default (state=[], action) => {
             return [...state, ...action.payload];
         case sessionActions.CREATE_SESSION:
             return [action.payload, ...state];
+        case sessionActions.EDIT_SESSION:
+            const copySessions = state.filter(session => session.id !== action.payload.id);
+            console.log(copySessions);
+            return [...copySessions, action.payload];
         default:
             return state
     }

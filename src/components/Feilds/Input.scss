@@ -1,7 +1,56 @@
+@import '../variables';
+
 .Input {
     font-size: 1.7rem;
     box-sizing: border-box;
     border-radius: 7px;
     padding: 0 10px;
     margin: 5px;
+
+    &__textarea {
+        height: 200px !important;
+        padding: 15px;
+        line-height: 1.6;
+        resize: none;
+
+        &--count {
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            font-size: 1.2rem;
+            color: darkgrey;
+        }
+    }
+
+    &__checkbox {
+        cursor: pointer;
+        font-size: 1.8rem;
+        position: relative;
+        margin: 10px 15px;
+
+        display: flex;
+        align-items: center;
+
+            &:hover &--input {
+                border: 2px solid $blue;
+            }
+            & > input {
+                display: none;
+            }
+
+        &--input {
+            cursor: pointer;
+            width: 12px;
+            height: 12px;
+            border: 2px solid $lightBlue;
+            border-radius: 4px;
+            transition: all .2s;
+            margin-left: 5px;
+        }
+
+        input:checked ~ &--input {
+            background-color: $blue;
+            border: 2px solid $blue;
+        }
+    }
 }

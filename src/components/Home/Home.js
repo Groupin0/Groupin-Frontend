@@ -1,9 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Feed from "../Feed/Feed";
-import {useDispatch} from "react-redux";
-import {getMoreSessions, getSessions} from "../../state/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {getMoreSessions, getSessions, isLoading} from "../../state/actions";
+import Spinner from "../Shared/Spinner/Spinner";
 
 const Home = () => {
+    const loading = useSelector(state => state.loading);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,7 +21,7 @@ const Home = () => {
 
     };
 
-    return <Feed onLoadMoreSessions={onGetMoreSessions} />
+    return (<>{!loading ? <Feed onLoadMoreSessions={onGetMoreSessions} /> : <Spinner />}</>)
 };
 
 export default Home;

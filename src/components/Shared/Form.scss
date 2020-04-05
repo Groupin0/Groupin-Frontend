@@ -44,9 +44,10 @@
         }
 
         &--small {
+            font-size: 1.4rem;
             text-align: center;
             margin: 15px 10px;
-            //flex: 1;
+            width: 230px;
         }
 
         &--error:focus {

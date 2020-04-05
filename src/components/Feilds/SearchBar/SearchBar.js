@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import './SearchBar.scss';
-import InputDate from "../InputDate/InputDate";
-import InputText from "../InputText/InputText";
+import '../Input.scss';
 
-const SearchBar = props => {
+const SearchBar = ({className, onSerach}) => {
+    const searchBarRef = useRef('');
+
+    let timeout = null;
+
+    const handleKeyup = (e) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            if (!searchBarRef.current.value.trim()) return;
+
+            onSerach(searchBarRef.current.value);
+        }, 1500);
+    };
     return (
-        <InputText
-            className= { `SearchBar ${ props.className }` } 
-            type= 'search' 
-            placeholder= 'חפש...' 
-            onChange= { props.searchChange }
-        />
+        <input ref={searchBarRef} type='search' placeholder='חפש מפגשים ...' onKeyUp={handleKeyup} className={`SearchBar Input ${className}`} />
     );
 };
 

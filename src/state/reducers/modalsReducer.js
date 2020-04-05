@@ -2,7 +2,8 @@ import {modalActions} from "../actions/enums";
 
 const modals = {
     addSessionModal: false,
-    infoSessionModal: false
+    infoSessionModal: false,
+    editSessionModal: false
 };
 
 export default (state=modals, action) => {

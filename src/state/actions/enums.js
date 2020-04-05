@@ -12,6 +12,7 @@ export const categoriesActions = {
 export const sessionActions = {
     FETCH_SESSIONS: '[SESSIONS] Fetch Sessions',
     CREATE_SESSION: '[SESSIONS] Create Sessions',
+    EDIT_SESSION: '[SESSIONS] Edit Session',
     LOAD_MORE_SESSIONS: '[SESSIONS] Load More Sessions'
 };
 

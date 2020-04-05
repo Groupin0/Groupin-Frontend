@@ -1,10 +1,12 @@
 import React from 'react';
-import '../Input.scss';
+import '../Input.scss'
+import {renderDate} from "../../../services/dateService";
 
-const InputDate = ({name = 'text', className = '', register, placeholder}) => {
+const InputDate = ({name = 'text', className = '', register, placeholder, defaultValue=''}) => {
     return (
         <input
-            name={ name } 
+            name={ name }
+            defaultValue={renderDate(defaultValue)}
             type= 'text'
             className= { `Input ${ className }` }
             ref={register}

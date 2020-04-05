@@ -5,6 +5,6 @@ export default (state=false, action) => {
         case loadingAction:
             return action.payload;
         default:
-            return state
+            return state;
     }
 }

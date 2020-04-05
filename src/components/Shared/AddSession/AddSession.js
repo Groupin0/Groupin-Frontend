@@ -37,7 +37,7 @@ const AddSession = () => {
             <p className='Form__title'>יצירת מפגש</p>
                 <div className='Form__row'>
                     <InputText
-                        register={register({required: true, minLength: 3, maxLength: 15})}
+                        register={register({required: true, minLength: 3, maxLength: 45})}
                         name= 'title'
                         placeholder= 'הכנס כותרת מפגש'
                         className={`Form__input ${errors.title ? 'Form__input--error' : ''}`} />

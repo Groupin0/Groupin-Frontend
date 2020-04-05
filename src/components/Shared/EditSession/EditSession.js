@@ -35,7 +35,7 @@ const EditSession = ({session}) => {
                 <p className='Form__title'>עריכת מפגש</p>
                 <div className='Form__row'>
                     <InputText
-                        register={register({required: true, minLength: 3, maxLength: 15})}
+                        register={register({required: true, minLength: 3, maxLength: 45})}
                         name='title'
                         defaultValue={title}
                         placeholder='הכנס כותרת מפגש'

@@ -3,7 +3,7 @@ import history from '../../history';
 import './MySessions.scss';
 import Feed from "../Feed/Feed";
 import {useDispatch, useSelector} from "react-redux";
-import {getMoreSessions, getMoreSessionsByUserId, getUserSessions} from "../../state/actions";
+import {getMoreSessionsByUserId, getUserSessions} from "../../state/actions";
 
 const MySessions = () => {
     const userId = useSelector(state => state.user ? state.user.id : null);
@@ -21,7 +21,7 @@ const MySessions = () => {
     return (
         <div className='MySessions'>
             <h1 className='MySessions__title'>המפגשים שלי</h1>
-            <Feed isUserSessions={true} onLoadMoreSessions={onGetMoreSessions} />
+            <Feed isUserSessions={true} onLoadMoreSessions={onGetMoreSessions} userId={userId} />
         </div>
     )
 };
